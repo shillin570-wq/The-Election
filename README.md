@@ -2,11 +2,11 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# The Election (Vercel-ready)
 
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/aaf394c1-857f-46a3-a8cd-bd3ace29cd53
+This project is configured for Vercel deployment with:
+- Vite frontend
+- Vercel Serverless API routes under `api/`
 
 ## Run Locally
 
@@ -15,13 +15,21 @@ View your app in AI Studio: https://ai.studio/apps/aaf394c1-857f-46a3-a8cd-bd3ac
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Copy `.env.example` to `.env.local` and adjust variables if needed
 3. Run the app:
    `npm run dev`
 
-## Deploy Note (405 Method Not Allowed)
+## Deploy on Vercel
 
-If frontend and backend are deployed separately, set `VITE_API_BASE_URL` to your backend URL.
+1. Import this repository into Vercel
+2. Framework preset: `Vite`
+3. Build command: `npm run build`
+4. Output directory: `dist`
+5. Environment variables:
+   - `VITE_API_BASE_URL` (keep empty when frontend and API are in the same Vercel project)
+   - `CORS_ORIGIN` (optional, comma-separated allowlist)
 
-Example in `.env.production`:
-`VITE_API_BASE_URL=https://your-backend.example.com`
+## Data persistence note
+
+Current API storage is in-memory per serverless instance. Data can reset after cold starts/redeploys.  
+For persistent production data, migrate users/crises/state data to an external database.
