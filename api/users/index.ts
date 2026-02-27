@@ -1,5 +1,5 @@
-import {applyCors, parseBody} from '../_http';
-import {getStore} from '../_store';
+import {applyCors, parseBody} from '../_http.js';
+import {getStore} from '../_store.js';
 
 type Req = {
   method?: string;
